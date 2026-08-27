@@ -1,0 +1,436 @@
+/* Modern Professional CSS Design System for RENE Solutions */
+
+:root {
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    --primary: #0d6efd;
+    --primary-dark: #0a58ca;
+    --primary-gradient: linear-gradient(135deg, #0d6efd 0%, #07429d 100%);
+    --accent-glow: rgba(13, 110, 253, 0.15);
+    
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-dark: #0f172a;
+    --text-muted: #475569;
+    --border-light: #e2e8f0;
+    
+    --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.12);
+    
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, .section-title {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+}
+
+/* Header & Navigation */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(13, 27, 62, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: white;
+    padding: 16px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    padding: 6px 0;
+    transition: var(--transition);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #60a5fa;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.85) 100%),
+                url("rei.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    color: white;
+    padding: 60px 20px;
+}
+
+.hero h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    max-width: 850px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtext {
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: rgba(241, 245, 249, 0.88);
+    max-width: 680px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+}
+
+.hero button {
+    padding: 14px 36px;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(13, 110, 253, 0.4);
+    transition: var(--transition);
+}
+
+.hero button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(13, 110, 253, 0.5);
+    background: linear-gradient(135deg, #1b75fc 0%, #0952c4 100%);
+}
+
+/* Sections Base */
+section {
+    padding: 80px 10%;
+}
+
+h2.section-title {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    margin-bottom: 44px;
+    color: var(--text-dark);
+    position: relative;
+}
+
+h2.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+/* About Section */
+#about p {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 840px;
+    margin: 0 auto;
+    line-height: 1.8;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+}
+
+#about strong {
+    color: var(--text-dark);
+}
+
+/* Cards Grid (Team & Products) */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.team-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.team-cards .card {
+    flex: 0 1 270px;
+    width: 100%;
+    text-align: center;
+}
+
+.team-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 16px auto;
+    display: block;
+    border: 3px solid var(--primary);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+    transition: var(--transition);
+}
+
+.card:hover .team-img {
+    transform: scale(1.06);
+    border-color: #60a5fa;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 28px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+.card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.card p strong {
+    color: var(--primary);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Business Information */
+.business-info {
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    box-shadow: var(--shadow-lg);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.business-info p {
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 12px;
+}
+
+.business-info p strong {
+    color: rgba(255, 255, 255, 0.85);
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+}
+
+/* Products Section */
+.project {
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+.project img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin-bottom: 18px;
+    background: #e2e8f0;
+}
+
+.project h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.project p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Testimonials / Feedback */
+.testimonial {
+    background: var(--bg-card);
+    border-left: 4px solid var(--primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    border-top: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    transition: var(--transition);
+}
+
+.testimonial:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+.testimonial p {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-dark);
+    margin: 10px 0;
+}
+
+.testimonial strong {
+    font-size: 14px;
+    color: var(--primary-dark);
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+    margin: 40px 10%;
+    padding: 50px 30px;
+}
+
+.contact p {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background: #0f172a;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 28px;
+    font-size: 14px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    section {
+        padding: 50px 5%;
+    }
+
+    .contact {
+        margin: 20px 5%;
+        padding: 30px 20px;
+    }
+}
